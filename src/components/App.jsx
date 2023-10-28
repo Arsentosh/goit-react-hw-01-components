@@ -1,70 +1,29 @@
-const jacques = {
-  username: 'Jacques Gluke',
-  tag: 'jgluke',
-  location: 'Ocho Rios, Jamaica',
-  avatar: 'https://cdn-icons-png.flaticon.com/512/2922/2922506.png',
-  stats: {
-    followers: 5603,
-    views: 4827,
-    likes: 1308,
-  },
-};
+import user from '../json-data/user.json';
+import data from '../json-data/data.json';
+import friends from '../json-data/friends.json';
+import transactions from '../json-data/transactions.json';
+import { Statistic } from './Satistic/Statistic';
+import { Profile } from './Profile/Profile';
+import { FriendList } from './FriendsList/FriendList/FriendList';
+import { TransactionHistory } from './TransactionHistory/TransactionHistory';
+import { Container, GlobalStyle } from './GlobalStyle';
 
-const Profile = props => {
-  return (
-    <div class="profile">
-      <div class="description">
-        <img
-          src={props.avatar}
-          alt={props.username}
-          class="avatar"
-          width={120}
-          height={120}
-        />
-        <p class="name">{props.username}</p>
-        <p class="tag">{props.tag}</p>
-        <p class="location">{props.location}</p>
-      </div>
-
-      <ul class="stats">
-        <li>
-          <span class="label">Followers</span>
-          <span class="quantity">{props.followers}</span>
-        </li>
-        <li>
-          <span class="label">Views</span>
-          <span class="quantity">{props.views}</span>
-        </li>
-        <li>
-          <span class="label">Likes</span>
-          <span class="quantity">{props.likes}</span>
-        </li>
-      </ul>
-    </div>
-  );
-};
+const { username, tag, location, avatar, stats } = user;
 
 export const App = () => {
   return (
-    <div
-      style={
-        {
-          // // height: '100vh',
-          // display: 'flex',
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          // fontSize: 40,
-          // color: '#010101',
-        }
-      }
-    >
+    <Container>
       <Profile
-        username={jacques.username}
-        tag={jacques.tag}
-        location={jacques.location}
-        avatar={jacques.avatar}
-        stats={jacques.stats}
+        username={username}
+        tag={tag}
+        location={location}
+        avatar={avatar}
+        stats={stats}
       />
-    </div>
+      <Statistic title="Upload stats" stats={data} />
+      <FriendList friends={friends} />
+      <TransactionHistory transaction={transactions} />
+      <GlobalStyle />
+    </Container>
   );
 };
