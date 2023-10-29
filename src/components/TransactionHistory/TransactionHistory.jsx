@@ -3,7 +3,7 @@ import {
   TransactionBills,
   TransactionHeaders,
   TransactionLine,
-} from './TransacrionHistory.styled';
+} from './TransactionHistory.styled';
 
 export const TransactionHistory = ({ transaction }) => {
   return (

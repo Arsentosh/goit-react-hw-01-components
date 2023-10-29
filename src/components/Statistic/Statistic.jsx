@@ -5,7 +5,7 @@ import {
   StatisticSection,
   StatysticListContainer,
   StatysticText,
-} from './Statystic.styled';
+} from './Statistic.styled';
 
 export const Statistic = ({ title, stats }) => {
   if (title) {
