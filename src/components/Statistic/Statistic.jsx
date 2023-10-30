@@ -8,36 +8,21 @@ import {
 } from './Statistic.styled';
 
 export const Statistic = ({ title, stats }) => {
-  if (title) {
-    return (
-      <StatisticSection>
-        <StatysticText className="title">{title}</StatysticText>
-        <StatysticListContainer>
-          {stats.map(({ id, label, percentage }) => {
-            return (
-              <StatiscticItem key={id} $label={label}>
-                <StatisticLabel>{label}</StatisticLabel>
-                <StatisticPercentage>{percentage}%</StatisticPercentage>
-              </StatiscticItem>
-            );
-          })}
-        </StatysticListContainer>
-      </StatisticSection>
-    );
-  } else {
-    return (
-      <StatisticSection>
-        <StatysticListContainer>
-          {stats.map(({ id, label, percentage }) => {
-            return (
-              <StatiscticItem key={id} $label={label}>
-                <StatisticLabel>{label}</StatisticLabel>
-                <StatisticPercentage>{percentage}%</StatisticPercentage>
-              </StatiscticItem>
-            );
-          })}
-        </StatysticListContainer>
-      </StatisticSection>
-    );
-  }
+  const renderTitle = title ? (
+    <StatysticText className="title">{title}</StatysticText>
+  ) : null;
+
+  return (
+    <StatisticSection>
+      {renderTitle}
+      <StatysticListContainer>
+        {stats.map(({ id, label, percentage }) => (
+          <StatiscticItem key={id} $label={label}>
+            <StatisticLabel>{label}</StatisticLabel>
+            <StatisticPercentage>{percentage}%</StatisticPercentage>
+          </StatiscticItem>
+        ))}
+      </StatysticListContainer>
+    </StatisticSection>
+  );
 };
